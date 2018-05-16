@@ -31,6 +31,9 @@ JSONEditor.defaults.themes.bootstrap3 = JSONEditor.AbstractTheme.extend({
     // TODO: use better slider
     return this._super(min, max, step);
   },
+  getNumberInput: function(min, max, step) {
+    return this._super(min, max, step);
+  },
   getFormInputField: function(type) {
     var el = this._super(type);
     if(type !== 'checkbox') {
