@@ -102,6 +102,20 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
 
         this.input = this.theme.getRangeInput(min,max,step);
       }
+      //number input with min, max and steps attribute
+       else if(this.format === 'number') {
+        this.input_type = 'number';
+        var min = this.schema.minimum || (Number.MIN_SAFE_INTEGER?Number.MIN_SAFE_INTEGER:-9007199254740991);
+        var max = this.schema.maximum || (Number.MAX_SAFE_INTEGER?Number.MAX_SAFE_INTEGER:9007199254740991);
+        var step = 1;
+        if(this.schema.multipleOf) {
+          if(min%this.schema.multipleOf) min = Math.ceil(min/this.schema.multipleOf)*this.schema.multipleOf;
+          if(max%this.schema.multipleOf) max = Math.floor(max/this.schema.multipleOf)*this.schema.multipleOf;
+          step = this.schema.multipleOf;
+        }
+
+        this.input = this.theme.getNumberInput(min,max,step);
+      }
       // Source Code
       else if([
           'actionscript',
