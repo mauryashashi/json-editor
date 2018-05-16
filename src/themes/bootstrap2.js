@@ -3,6 +3,9 @@ JSONEditor.defaults.themes.bootstrap2 = JSONEditor.AbstractTheme.extend({
     // TODO: use bootstrap slider
     return this._super(min, max, step);
   },
+  getNumberInput: function(min, max, step) {
+    return this._super(min, max, step);
+  },
   getGridContainer: function() {
     var el = document.createElement('div');
     el.className = 'container-fluid';
